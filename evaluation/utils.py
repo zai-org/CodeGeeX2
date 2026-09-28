@@ -385,7 +385,9 @@ def cleanup_code(
                 if code.count(w) > 1:
                     code = code[:code.rfind(w)]
             else:
-                code = code[:code.rfind(w)]
+                cut = code.rfind(w)
+                if cut != -1:
+                    code = code[:cut]
         code = first_block(code, stop_words)
     elif dataset_type == "humanevalx":
         if language_type.lower() == "python":
